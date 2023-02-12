@@ -46,3 +46,40 @@
 // int[] sums = SumNegativeAndPositive(myArray);
 // System.Console.WriteLine($"Сумма отрицательных элементов равна {sums[0]}");
 // System.Console.WriteLine($"Сумма положительных элементов равна {sums[1]}");
+
+int[] GenerateArray(int size, int leftRange, int rightRange)
+{
+    int[] array = new int[size];
+    var rand = new Random();
+    for (int i = 0; i < array.Length; i++)
+    {
+        array[i] = rand.Next(leftRange, rightRange + 1);
+    }
+    return array;
+}
+
+void PrintArray(int[] array)
+{
+    System.Console.WriteLine("[" + string.Join(",", array) + "]");
+}
+void SumNegativeAndPositive(int[] array, out int SumPositive, out int SumNegative)
+{
+    SumNegative = 0;
+    SumPositive = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] < 0)
+        {
+            SumNegative += array[i];
+        }
+        else
+        {
+            SumPositive += array[i];
+        }
+    }
+}
+int[] myArray = GenerateArray(6, -9, 9);
+PrintArray(myArray);
+SumNegativeAndPositive(myArray, out int SumPositive, out int SumNegative);
+System.Console.WriteLine($"Сумма отрицательных элементов равна {SumNegative}");
+System.Console.WriteLine($"Сумма положительных элементов равна {SumPositive}");
